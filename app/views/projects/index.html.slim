@@ -1,0 +1,16 @@
+h2 Listing projects
+
+- @projects.each do |project|
+  .project
+    h3 = link_to project.title, project
+    .body = simple_format project.body
+    hr
+    .meta 
+      .budget = project.budget
+      .time = project.time
+    .clear
+= paginate @projects
+    /p 
+      = link_to 'Show', project
+      = link_to 'Edit', edit_project_path(project)
+      = link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete

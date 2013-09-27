@@ -1,0 +1,23 @@
+h1 Listing responses
+
+table
+  tr
+    th Body
+    th Budjet
+    th Time
+    th
+    th
+    th
+
+  - @responses.each do |response|
+    tr
+      td = response.body
+      td = response.budjet
+      td = response.time
+      td = link_to 'Show', response
+      td = link_to 'Edit', edit_response_path(response)
+      td = link_to 'Destroy', response, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Response', new_response_path

@@ -1,0 +1,16 @@
+p#notice = notice
+
+.title
+  h2 = @project.title
+.body = simple_format @project.body
+.mets
+  .budget = @project.budget
+  .time   = @project.time  
+  .user   = link_to @project.user.openid_data['name']['full_name'] || @project.user.openid_identity, @project.user.openid_identity
+.clear
+
+- if @author
+  = link_to 'Edit', edit_project_path(@project)
+  | &nbsp;
+  = link_to 'Destroy', @project, :confirm => 'Are you sure?', :method => :delete
+

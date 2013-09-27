@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Lancemine
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    script src="http://loginza.ru/js/widget.js" type="text/javascript"
+    = csrf_meta_tags
+  body
+    ul.menu
+      - if signed_in?
+        li
+          = link_to 'Home', root_path
+        li
+          = link_to 'New Project', new_project_path
+        li
+          = link_to "Sign out", '/signout', :method => :delete
+      - else        
+        li
+          a href="https://loginza.ru/api/widget?token_url=#{u 'http://localhost:3000/signin'}&providers_set=vkontakte,facebook,livejournal" class="loginza" Войти через OpenID
+    = yield
